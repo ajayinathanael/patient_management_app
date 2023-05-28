@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+    <div class="container">
+        
+        <a href="#" class="navbar-brand">
+            <img src="images/doctor.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Patient Management System
+        </a>
+
+    </div>
+</nav>
+
+<div class="header container pt-3">
+    <h2>Add New Patient</h2>
+</div>
+
+<div class="container">
+    <form action="/add_patient" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-10 mb-3 form-group">
+                <input type="text" class="form-control" placeholder="surname" name="surname" required>
+            </div>
+
+            <div class="col-md-10 mb-3 form-group">
+                <input type="text" class="form-control" placeholder="firstname" name="firstname" required>
+            </div>
+
+            <div class="col-md-10 mb-3 form-group">
+               Date of Birth <input type="date" class="form-control" placeholder="Date of Birth" name="dateOfBirth" required>
+            </div>
+
+            <div class="col-md-10 mb-3 form-group">
+                Home Address <textarea name="HomeAddress" placeholder="Home Address" class="form-control" rows="20" cols="50" required></textarea>
+            </div>
+
+            <div class="col-md-10 mb-3 form-group">
+                <input type="text" class="form-control" placeholder="occupation" name="occupation" required>
+            </div>
+            
+            <div class="col-md-10 mb-3 form-group">
+                <input type="text" class="form-control" placeholder="nameOfIllness" name="nameOfIllness" required>
+            </div>
+            
+            <div class="col-md-10 mb-3 form-group">
+                Upload Picture: <input type="file" accept="image/*" name="photo" class="form-control text-black" required>
+            </div>
+
+            <div class="col-md-10 mb-3 form-group">
+                <a href="/" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

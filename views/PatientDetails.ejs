@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+    <div class="container">
+        
+        <a href="#" class="navbar-brand">
+            <img src="../uploads/<%= patient.photo %>" width="30" height="30" class="d-inline-block align-top" alt="logo">
+            Patient Management System
+        </a>
+    </div>
+</nav>
+
+  
+<!-- Post Content -->
+<section class="p-5 text-dark text-sm-start">
+    <div class="container">
+        <img class="mb-3" src="../uploads/<%= patient.photo %>"  width="300" height="200" alt="patient photo">
+
+        <h3> <%= patient.surname %> <%= patient.firstname %> </h3>
+         <p> <%= patient.dateOfBirth %> </p>
+         <p> <%= patient.HomeAddress %> </p>
+         <p> <%= patient.occupation %> </p>
+         <p> <%= patient.nameOfIllness %> </p>
+ 
+         <!-- <button class="btn btn-dark"><a href="../edit_patient/<%= patient.id %>" target="_blank" class="text-decoration-none text-light">Edit Patient</a></button> -->
+         <div class="d-flex">
+             <button style="margin-right: 6px;" class="btn btn-success"><a href="../add_patient" target="_blank" class="text-decoration-none text-light">Create New Patient</a></button>
+             <button style="margin-right: 6px;" class="btn btn-info"><a href="/" class="text-decoration-none text-light">Back</a></button>
+             <form action="/<%=patient.id%>?_method=DELETE" method="post" style="margin-top: 5px;">
+                <input class="footer-newsletter btn btn-danger " type="submit" value="❌ Delete Patient">
+            </form>
+         </div>
+         <!-- <button class="btn btn-danger"> <a href="/<%= patient.id %>" target="_blank" class="text-decoration-none text-light">Delete Patient</a></button> -->
+         
+         
+    </div>
+
+</section>
+
+<%- include('partials/footer') %>
