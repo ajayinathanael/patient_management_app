@@ -14,23 +14,23 @@
 <!-- Post Content -->
 <section class="p-5 text-dark text-sm-start">
     <div class="container">
-        <img class="mb-3" src="../uploads/<%= patient.photo %>"  width="300" height="200" alt="patient photo">
+        <img class="img-fluid mb-3" src="../uploads/<%= patient.photo %>"  width="300" height="200" alt="patient photo">
 
         <h3> <%= patient.surname %> <%= patient.firstname %> </h3>
          <p> <%= patient.dateOfBirth %> </p>
          <p> <%= patient.HomeAddress %> </p>
          <p> <%= patient.occupation %> </p>
          <p> <%= patient.nameOfIllness %> </p>
- 
-         <!-- <button class="btn btn-dark"><a href="../edit_patient/<%= patient.id %>" target="_blank" class="text-decoration-none text-light">Edit Patient</a></button> -->
+  
          <div class="d-flex">
-             <button style="margin-right: 6px;" class="btn btn-success"><a href="../add_patient" target="_blank" class="text-decoration-none text-light">Create New Patient</a></button>
+             <button style="margin-right: 6px;" class="btn btn-dark"><a href="../editPatient/<%= patient._id %>" class="text-decoration-none text-light">Edit Patient</a></button>
+             <button style="margin-right: 6px;" class="btn btn-success"><a href="../add_patient" class="text-decoration-none text-light">Create New Patient</a></button>
              <button style="margin-right: 6px;" class="btn btn-info"><a href="/" class="text-decoration-none text-light">Back</a></button>
-             <form action="/<%=patient.id%>?_method=DELETE" method="post" style="margin-top: 5px;">
-                <input class="footer-newsletter btn btn-danger " type="submit" value="❌ Delete Patient">
-            </form>
-         </div>
-         <!-- <button class="btn btn-danger"> <a href="/<%= patient.id %>" target="_blank" class="text-decoration-none text-light">Delete Patient</a></button> -->
+            </div>
+            <form action="/<%=patient.id%>?_method=DELETE" method="post" style="margin-top: 5px;">
+               <input class="footer-newsletter btn btn-danger " type="submit" value="❌ Delete Patient">
+           </form>
+         <!-- <button class="btn btn-danger"> <a href="/<%= patient.id %>" class="text-decoration-none text-light">Delete Patient</a></button> -->
          
          
     </div>

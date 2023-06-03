@@ -1,6 +1,5 @@
 
 const express = require("express");
-const bodyParser = require('body-parser');
 const userRouter = require('./routes/userRoutes');
 const methodOverride = require("method-override");
 

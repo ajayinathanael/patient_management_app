@@ -5,7 +5,7 @@
     <div class="container">
         
         <a href="#" class="navbar-brand">
-            <img src="/images/bbc-nodejs.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="../images/doctor.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
             Patient Management System
         </a>
 
@@ -15,7 +15,7 @@
 
 <div class="container">
     <h2>Editing <%= patient.surname %> <%= patient.firstname %> </h2>
-    <form action="/<%=patient.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <form action="/editPatient/<%=patient.id%>?_method=put" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-10 mb-3 form-group">
                 <input type="text" class="form-control" placeholder="surname" name="surname" value="<%= patient.surname %>" required>
@@ -41,9 +41,9 @@
                 <input type="text" class="form-control" placeholder="nameOfIllness" name="nameOfIllness" value="<%= patient.nameOfIllness %>" required>
             </div>
             
-            <!-- <div class="col-md-10 mb-3 form-group">
+            <div class="col-md-10 mb-3 form-group">
                 Upload Picture: <input type="file" accept="image/*" name="photo" class="form-control text-black" required>
-            </div> -->
+            </div>
 
             <div class="col-md-10 mb-3 form-group">
                 <a href="/" class="btn btn-warning">Cancel</a>

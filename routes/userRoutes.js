@@ -41,22 +41,47 @@ router.get('/', async(req,res,next)=>{
 
 });
 
-
 router.get("/view_patient/:id", async(req,res)=>{ 
     const detail = req.params.id;
     let patient = await User.findOne({_id: detail});
     res.render('PatientDetails', {patient:patient});
 });
 
- 
 router.get("/add_patient", (req,res)=>{
     res.render('myNew');
 });
 
+router.get('/editPatient/:id', async(req,res)=>{ // /editStaff/:id
+    const requestedPatient = req.params.id;
+    let patient = await User.findOne({_id: requestedPatient});
+    res.render("myEdit", {patient:patient}); 
+});
+
 
 // POST, UPDATE AND DELETE ROUTES
+router.put('/editPatient/:id', upload.single('photo'), async(req,res)=>{
+
+    const newPatient =  ({
+        surname: req.body.surname,
+        firstname: req.body.firstname,
+        dateOfBirth: req.body.dateOfBirth,
+        HomeAddress: req.body.HomeAddress,
+        occupation: req.body.occupation,
+        nameOfIllness: req.body.nameOfIllness,
+        photo: req.file.filename
+    });
+
+    try{
+        const doc = await User.findByIdAndUpdate(req.params.id, newPatient);
+        res.redirect('/');
+    }
+    catch(err){
+        res.send(err);
+    } 
+});
+
+
 router.post('/add_patient', upload.single('photo'), async(req,res)=>{
-    
     
     let PatientDetails = ({
         surname: req.body.surname,
@@ -84,51 +109,6 @@ router.delete('/:id', async(req,res)=>{
     res.redirect('/');
 
 });
-
-router.put('/:id', async(req,res)=>{
-
-    // /edit_patient/:surname
-
-    // const newPatient =  ({
-    //     surname: req.body.surname,
-    //     firstname: req.body.firstname,
-    //     dateOfBirth: req.body.dateOfBirth,
-    //     HomeAddress: req.body.HomeAddress,
-    //     occupation: req.body.occupation,
-    //     nameOfIllness: req.body.nameOfIllness
-    //     // photo: req.file.filename
-
-    // });
-    
-    req.patient = await User.findById(req.params.id);
-
-    // req.params.id = req.patient.id;
-
-    let patient = req.patient;
-  
-    patient.surname = req.body.surname;
-    patient.firstname = req.body.firstname;
-    patient.dateOfBirth = req.body.dateOfBirth;
-    patient.HomeAddress = req.body.HomeAddress;
-    patient.occupation = req.body.occupation;
-    patient.nameOfIllness = req.body.nameOfIllness;
-    
-    // console.log(patient.firstname);
-    // const doc = await User.findByIdAndUpdate(req.params.id, req.body);
-
-    try{
-        patient = await patient.save();
-        //now redirect to the view route
-        // console.log(patient);
-        res.redirect('/');
-    }catch(err){
-        console.log(err);
-        // res.redirect(`/blogs/edit/${blog.id}`, {blog:blog});
-        // redirect to the edit route
-    }
-
-});
-
 
 
 module.exports = router;
