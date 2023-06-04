@@ -16,6 +16,11 @@
     <div class="container">
         <img class="img-fluid mb-3" src="../uploads/<%= patient.photo %>"  width="300" height="200" alt="patient photo">
 
+        <% for(count=0; count < patient.length; count++){ %>
+            <p>Patient id: <%= [count+1] %> </p>
+        <% } %>
+
+        
         <h3> <%= patient.surname %> <%= patient.firstname %> </h3>
          <p> <%= patient.dateOfBirth %> </p>
          <p> <%= patient.HomeAddress %> </p>
