@@ -1,0 +1,13 @@
+
+.blog{
+    position: relative;
+    animation: mymove;
+    animation-duration: 15s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+  to {left: 300px;}
+}
