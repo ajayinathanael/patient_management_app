@@ -18,39 +18,45 @@
     <form action="/editPatient/<%=patient.id%>?_method=put" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-10 mb-3 form-group">
-                <input type="text" class="form-control" placeholder="surname" name="surname" value="<%= patient.surname %>" required>
+                <input type="text" class="form-control" placeholder="surname" name="surname" value="<%= patient.surname %>">
             </div>
 
             <div class="col-md-10 mb-3 form-group">
-                <input type="text" class="form-control" placeholder="firstname" name="firstname" value="<%= patient.firstname %>" required>
+                <input type="text" class="form-control" placeholder="firstname" name="firstname" value="<%= patient.firstname %>">
             </div>
 
             <div class="col-md-10 mb-3 form-group">
-               Date of Birth <input type="date" class="form-control" placeholder="Date of Birth" name="dateOfBirth"  value="<%= patient.dateOfBirth %>" required>
+               Date of Birth <input type="date" class="form-control" placeholder="Date of Birth" name="dateOfBirth"  value="<%= patient.dateOfBirth %>">
             </div>
 
             <div class="col-md-10 mb-3 form-group">
-                Home Address <textarea name="HomeAddress" class="form-control" rows="20" cols="50" placeholder="<%= patient.HomeAddress %>"  required></textarea>
+                Home Address <textarea name="HomeAddress" class="form-control" rows="20" cols="50" value="<%= patient.HomeAddress %>" ></textarea>
             </div>
 
             <div class="col-md-10 mb-3 form-group">
-                <input type="text" class="form-control" placeholder="occupation" name="occupation" value="<%= patient.occupation %>" required>
+                <input type="text" class="form-control" placeholder="occupation" name="occupation" value="<%= patient.occupation %>">
             </div>
             
             <div class="col-md-10 mb-3 form-group">
-                <input type="text" class="form-control" placeholder="nameOfIllness" name="nameOfIllness" value="<%= patient.nameOfIllness %>" required>
+                <input type="text" class="form-control" placeholder="nameOfIllness" name="nameOfIllness" value="<%= patient.nameOfIllness %>">
             </div>
             
             <div class="col-md-10 mb-3 form-group">
-                Upload Picture: <input type="file" accept="image/*" name="photo" class="form-control text-black" required>
+                Upload Picture: <input type="file" accept="image/*" name="photo" class="form-control text-black">
             </div>
 
             <div class="col-md-10 mb-3 form-group">
                 <a href="/" class="btn btn-warning">Cancel</a>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" onclick="myFunction()" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    function myFunction(){
+        alert("User created successfully");
+    }
+</script>
 
 <%- include('partials/footer') %>

@@ -2,6 +2,7 @@
 const User = require('../model/userModel');
 const slug = require('slugify');
 const multer = require('multer');
+const sharp = require('sharp');
 const express = require('express');
 const router = express.Router();
 
@@ -59,7 +60,15 @@ router.get('/editPatient/:id', async(req,res)=>{ // /editStaff/:id
 
 
 // POST, UPDATE AND DELETE ROUTES
-router.put('/editPatient/:id', upload.single('photo'), async(req,res)=>{
+router.put('/editPatient/:id', upload.single('photo'), async(req,res,next)=>{
+ 
+    // await sharp(req.file.buffer) //sharp for file reduction, the file is in a buddfer
+    // .resize(500, 500) //width, height
+    // .toFormat('jpeg')
+    // .jpeg({ quality: 90 }) 
+    // .toFile(`public/uploads/${req.file.filename}`);
+
+    // next();
 
     const newPatient =  ({
         surname: req.body.surname,
@@ -72,7 +81,8 @@ router.put('/editPatient/:id', upload.single('photo'), async(req,res)=>{
     });
 
     try{
-        const doc = await User.findByIdAndUpdate(req.params.id, newPatient);
+        const doc = await User.findByIdAndUpdate(req.params.id, newPatient,{
+            new: true});
         res.redirect('/');
     }
     catch(err){
@@ -82,6 +92,13 @@ router.put('/editPatient/:id', upload.single('photo'), async(req,res)=>{
 
 
 router.post('/add_patient', upload.single('photo'), async(req,res)=>{
+    
+    // await sharp(req.file.buffer) //sharp for file reduction, the file is in a buddfer
+    // .resize(500, 500) //width, height
+    // .toFormat('jpeg')
+    // .jpeg({ quality: 90 }) 
+    // .toFile(`public/uploads/${req.file.filename}`);
+
     
     let PatientDetails = ({
         surname: req.body.surname,
@@ -93,13 +110,14 @@ router.post('/add_patient', upload.single('photo'), async(req,res)=>{
         photo: req.file.filename
 
     });
-
+    
     try{
         const newUser = await User.create(PatientDetails); 
         res.redirect('/');
     }catch(err){
         console.log(err);
     }
+    // next();
     
 });
 
